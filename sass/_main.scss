@@ -1,32 +1,100 @@
-$bacground-color: darkblue;
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Montserrat:wght@100&family=Quintessential&display=swap");
+
+$background-color: #060447;
+$golden-colour: #fff38a;
+$golden-brown-colour: #827b68;
 
 * {
   width: 100%;
-  background-color: darken($bacground-color, 15%);
+  background-color: $background-color;
+  font-family: "Montserrat", sans-serif;
+  color: $golden-colour;
 }
 
+main {
+  margin-top: 4rem;
+}
 .top-section {
-  width: 90%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.description {
-  height: 50%;
-  color: rgb(255, 255, 82);
-  border: 1px solid red;
-  width: 40%;
-  text-align: center;
   margin: auto;
 }
 
-.pic-container {
+.left-container {
+  height: 30rem;
   width: 40%;
-  height: 70%;
+}
 
-  &__pic {
-    height: 35rem;
-    width: 24rem;
+.description {
+  text-align: left;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 35%;
+  &__icon {
+    height: 4rem;
+    width: 4rem;
+  }
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+
+.pic {
+  height: 35rem;
+  width: 25rem;
+  margin-right: 0px;
+}
+
+.date {
+  margin-top: 6rem;
+  margin-left: 4rem;
+  display: flex;
+  justify-content: center;
+  width: min-content;
+  font-size: 10rem;
+  font-weight: bold;
+  height: 40%;
+}
+
+.bottom-section {
+  height: 15%;
+  width: 85%;
+  margin: auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  &__arrows {
+    width: 10%;
+  }
+}
+
+.arrow {
+  height: 1.5rem;
+  width: 2rem;
+  &__right {
+    margin-left: 1rem;
+  }
+}
+
+.balls {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  &__ball {
+    height: 2rem;
+    width: auto;
+  }
+  &__line {
+    height: 0rem;
+    border: 1px solid $golden-brown-colour;
+    transform: translateY(1rem);
+    &--active {
+      border: 1px solid $golden-colour;
+    }
   }
 }
