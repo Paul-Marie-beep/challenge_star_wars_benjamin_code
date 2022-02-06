@@ -4,6 +4,8 @@ $background-color: #060447;
 $golden-colour: #fff38a;
 $golden-brown-colour: #827b68;
 
+$width: 75%;
+
 * {
   width: 100%;
   background-color: $background-color;
@@ -12,10 +14,11 @@ $golden-brown-colour: #827b68;
 }
 
 main {
+  margin: auto;
   margin-top: 4rem;
 }
 .top-section {
-  width: 85%;
+  width: $width;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,7 +66,7 @@ main {
 
 .bottom-section {
   height: 15%;
-  width: 85%;
+  width: $width;
   margin: auto;
   margin-top: 2rem;
   display: flex;
