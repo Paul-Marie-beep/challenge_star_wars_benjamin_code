@@ -1,0 +1,32 @@
+$bacground-color: darkblue;
+
+* {
+  width: 100%;
+  background-color: darken($bacground-color, 15%);
+}
+
+.top-section {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  height: 50%;
+  color: rgb(255, 255, 82);
+  border: 1px solid red;
+  width: 40%;
+  text-align: center;
+  margin: auto;
+}
+
+.pic-container {
+  width: 40%;
+  height: 70%;
+
+  &__pic {
+    height: 35rem;
+    width: 24rem;
+  }
+}
