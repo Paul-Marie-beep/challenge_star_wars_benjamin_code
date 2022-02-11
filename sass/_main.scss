@@ -109,6 +109,7 @@ main {
 .arrow {
   height: 1.5rem;
   width: 2rem;
+  cursor: pointer;
   &__right {
     margin-left: 1rem;
   }
@@ -123,11 +124,22 @@ main {
     width: auto;
   }
   &__line {
-    height: 0rem;
-    border: 1px solid $golden-brown-colour;
-    transform: translateY(1rem);
+    height: 2px;
+    background-color: $golden-brown-colour;
+    transition: transform 2s;
+    transform-origin: left;
+    position: absolute;
+    top: 50%;
     &--active {
-      border: 1px solid $golden-colour;
+      background-color: $golden-colour;
+    }
+    &--transform {
+      transform: scaleX(0);
+      opacity: 0;
     }
   }
+}
+
+.lines {
+  position: relative;
 }
