@@ -6,6 +6,8 @@ $golden-brown-colour: #827b68;
 
 $width: 75%;
 
+$date-font-size: 13rem;
+
 * {
   width: 100%;
   background-color: $background-color;
@@ -15,60 +17,66 @@ $width: 75%;
 
 main {
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 .top-section {
   width: $width;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin: auto;
 }
 
 .left-container {
-  height: 30rem;
   width: 40%;
+  height: 31rem;
+  margin-top: 0%;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .description {
   text-align: left;
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 35%;
+  height: auto;
+  margin-top: 0px;
   &__icon {
     height: 4rem;
     width: 4rem;
   }
   &__title {
-    font-size: 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
     font-weight: 700;
+  }
+  &__text {
+    margin-top: -1rem;
+    width: 96%;
   }
 }
 
 .pic {
-  height: 35rem;
-  width: 25rem;
+  height: 32rem;
+  width: auto;
   margin-right: 0px;
 }
 
 .date {
-  margin-top: 6rem;
-  margin-left: 4rem;
   display: flex;
   justify-content: center;
   width: min-content;
-  font-size: 10rem;
+  font-size: $date-font-size;
   font-weight: bold;
-  height: 40%;
+  height: $date-font-size;
 }
 
 .bottom-section {
   height: 15%;
   width: $width;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 4rem;
   display: flex;
   justify-content: space-between;
   &__arrows {
