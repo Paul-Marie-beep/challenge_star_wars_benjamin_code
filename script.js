@@ -5,7 +5,6 @@ const lineTwo = document.querySelector(".balls__line--active");
 const lineOne = document.querySelector(".balls__line");
 
 let i = 1;
-let j = 1;
 
 // Function to hyde and reaveal the elements
 const toggleOpacity = function (domElement1, domElement2) {
@@ -15,30 +14,54 @@ const toggleOpacity = function (domElement1, domElement2) {
 
 // Function to translate each div 100% more on the left. We want to select the distance travelled depending on which step of the sequence we are currently in
 const transformLeft = function (domElement) {
-  domElement.classList.add(`translate-left-${j}`);
+  domElement.classList.add(`translate-left-${i}`);
+};
+
+const transformRight = function (domElement) {
+  domElement.classList.remove(`translate-left-${i - 1}`);
 };
 
 // Type can be title, icon or text
 // It will move to the left the elements and hyde or reveal them
-const changeLeft = function (type) {
+const moveLeft = function (type) {
+  const allEl = document.querySelectorAll(`.description__${type}`);
+  const el1 = document.querySelector(`.description__${type}--${i}`);
+  const el2 = document.querySelector(`.description__${type}--${i + 1}`);
+  toggleOpacity(el1, el2);
+  allEl.forEach((el) => transformLeft(el));
+};
+
+const moveRight = function (type) {
+  const allEl = document.querySelectorAll(`.description__${type}`);
+  const el1 = document.querySelector(`.description__${type}--${i - 1}`);
+  const el2 = document.querySelector(`.description__${type}--${i}`);
+  toggleOpacity(el1, el2);
+  allEl.forEach((el) => transformRight(el));
+};
+
+const arrowLeftPressed = function () {
   if (i >= 3) return;
-  const allIcons = document.querySelectorAll(`.description__${type}`);
-  const icon1 = document.querySelector(`.description__${type}--${i}`);
-  const icon2 = document.querySelector(`.description__${type}--${i + 1}`);
-  console.log(allIcons);
-  toggleOpacity(icon1, icon2);
-  allIcons.forEach((icon) => transformLeft(icon));
+  moveLeft("icon");
+  moveLeft("title");
+  moveLeft("text");
+  moveLeft("pic");
+  arrowLeft.src = "icons/arrow_left.png";
+  lineTwo.classList.remove("balls__line--transform");
+  i += 1;
+};
+
+const arrowRightPressed = function () {
+  if (i <= 1) return;
+  moveRight("icon");
+  moveRight("title");
+  moveRight("text");
+  moveRight("pic");
+  i -= 1;
+  if (i === 1) arrowLeft.src = "icons/arrow_left_dark.png";
 };
 
 const init = function () {
-  arrowRight.addEventListener("click", function () {
-    changeLeft("icon");
-    changeLeft("title");
-    changeLeft("text");
-    changeLeft("pic");
-    lineTwo.classList.remove("balls__line--transform");
-    i += 1;
-    j += 1;
-  });
+  arrowRight.addEventListener("click", arrowLeftPressed);
+  arrowLeft.addEventListener("click", arrowRightPressed);
 };
 init();
