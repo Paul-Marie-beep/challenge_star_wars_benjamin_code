@@ -81,8 +81,9 @@ const lineProgressionPlus = function () {
   lineToMove.classList.remove("meter__line--transform");
 };
 
+// We must substract 1 to the index because it is incremented at the end of the function when you press the right arrow
 const lineProgressionMinus = function () {
-  const lineToMove = document.querySelector(`.meter__line--active-${i}`);
+  const lineToMove = document.querySelector(`.meter__line--active-${i - 1}`);
   lineToMove.classList.add("meter__line--transform");
 };
 
@@ -105,6 +106,7 @@ const arrowLeftPressed = function () {
   moveRight("text");
   moveRight("pic");
   changeRightDate();
+  lineProgressionMinus();
   i -= 1;
   if (i === 1) arrowLeft.src = "icons/arrow_left_dark.png";
 };
