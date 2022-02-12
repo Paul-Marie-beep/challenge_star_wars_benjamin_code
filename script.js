@@ -1,12 +1,17 @@
 const arrowRight = document.querySelector(".arrow__right");
 const arrowLeft = document.querySelector(".arrow__left");
 
+const el1 = document.querySelector(".dates__1");
+const el2 = document.querySelector(".dates__2");
+const el3 = document.querySelector(".dates__3");
+const el2_2 = document.querySelector(".dates__2--digit-2");
+
 const lineTwo = document.querySelector(".balls__line--active");
 const lineOne = document.querySelector(".balls__line");
 
 let i = 1;
 
-// Function to hyde and reaveal the elements
+// Function to hyde and reveal the elements
 const toggleOpacity = function (domElement1, domElement2) {
   domElement1.classList.toggle("hidden");
   domElement2.classList.toggle("hidden");
@@ -21,7 +26,7 @@ const transformRight = function (domElement) {
   domElement.classList.remove(`translate-left-${i - 1}`);
 };
 
-// Type can be title, icon or text
+// Type can be title, icon, text or pic.
 // It will move to the left the elements and hyde or reveal them
 const moveLeft = function (type) {
   const allEl = document.querySelectorAll(`.description__${type}`);
@@ -35,33 +40,66 @@ const moveRight = function (type) {
   const allEl = document.querySelectorAll(`.description__${type}`);
   const el1 = document.querySelector(`.description__${type}--${i - 1}`);
   const el2 = document.querySelector(`.description__${type}--${i}`);
+  console.log(allEl);
   toggleOpacity(el1, el2);
   allEl.forEach((el) => transformRight(el));
 };
 
-const arrowLeftPressed = function () {
+const changeLeftDate = function () {
+  if (i === 1) {
+    transformLeft(el1);
+    transformLeft(el2);
+    toggleOpacity(el1, el2);
+    el3.classList.add("translate-left-2");
+  }
+
+  if (i === 2) {
+    transformLeft(el2_2);
+    el3.classList.add("translate-left-custom");
+    toggleOpacity(el2_2, el3);
+  }
+};
+
+const changeRightDate = function () {
+  if (i === 3) {
+    el3.classList.remove("translate-left-custom");
+    transformRight(el2_2);
+    toggleOpacity(el3, el2_2);
+  }
+
+  if (i === 2) {
+    transformRight(el1);
+    transformRight(el2);
+    toggleOpacity(el1, el2);
+    el3.classList.remove("translate-left-2");
+  }
+};
+
+const arrowRightPressed = function () {
   if (i >= 3) return;
   moveLeft("icon");
   moveLeft("title");
   moveLeft("text");
   moveLeft("pic");
+  changeLeftDate();
   arrowLeft.src = "icons/arrow_left.png";
   lineTwo.classList.remove("balls__line--transform");
   i += 1;
 };
 
-const arrowRightPressed = function () {
+const arrowLeftPressed = function () {
   if (i <= 1) return;
   moveRight("icon");
   moveRight("title");
   moveRight("text");
   moveRight("pic");
+  changeRightDate();
   i -= 1;
   if (i === 1) arrowLeft.src = "icons/arrow_left_dark.png";
 };
 
 const init = function () {
-  arrowRight.addEventListener("click", arrowLeftPressed);
-  arrowLeft.addEventListener("click", arrowRightPressed);
+  arrowRight.addEventListener("click", arrowRightPressed);
+  arrowLeft.addEventListener("click", arrowLeftPressed);
 };
 init();

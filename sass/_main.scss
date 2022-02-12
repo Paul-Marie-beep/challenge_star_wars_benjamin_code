@@ -97,21 +97,28 @@ main {
   }
 }
 
-.date {
+.dates {
   display: flex;
+  width: auto;
   justify-content: center;
-  width: min-content;
   font-size: $date-font-size;
   font-weight: bolder;
   height: $date-font-size;
+  &__1 {
+    @include transition-transform();
+  }
+  &__2 {
+    display: flex;
+    margin-left: 1rem;
+    @include transition-transform();
+    &--digit-2 {
+      @include transition-transform();
+    }
+  }
+  &__3 {
+    @include transition-transform();
+  }
 }
-
-// .camo {
-//   transform: translateY(-100%);
-//   &--times-2 {
-//     transform: translateY(-200%);
-//   }
-// }
 
 .bottom-section {
   height: 15%;
@@ -168,4 +175,8 @@ main {
 }
 .translate-left-2 {
   transform: translateX(-200%);
+}
+
+.translate-left-custom {
+  transform: translateX(-340%);
 }
