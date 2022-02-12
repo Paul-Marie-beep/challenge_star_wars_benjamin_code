@@ -9,7 +9,7 @@ $width: 75%;
 $date-font-size: 13rem;
 
 @mixin transition-transform {
-  transition: opacity 0.15s ease, transform 0.2s ease-in-out;
+  transition: opacity 0.2s ease, transform 0.2s ease-in;
 }
 
 * {
@@ -61,6 +61,7 @@ main {
   margin: auto;
   height: auto;
   margin-top: 0px;
+  scroll-behavior: smooth;
   &__icon {
     height: 4rem;
     width: 4rem;
@@ -141,7 +142,7 @@ main {
   }
 }
 
-.balls {
+.meter {
   display: flex;
   justify-content: space-between;
   width: 85%;
@@ -156,7 +157,10 @@ main {
     transform-origin: left;
     position: absolute;
     top: 50%;
-    &--active {
+    &--active-1,
+    &--active-2,
+    &--active-3,
+    &--active-4 {
       background-color: $golden-colour;
     }
     &--transform {

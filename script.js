@@ -40,11 +40,11 @@ const moveRight = function (type) {
   const allEl = document.querySelectorAll(`.description__${type}`);
   const el1 = document.querySelector(`.description__${type}--${i - 1}`);
   const el2 = document.querySelector(`.description__${type}--${i}`);
-  console.log(allEl);
   toggleOpacity(el1, el2);
   allEl.forEach((el) => transformRight(el));
 };
 
+// We create custom functions the handle the behaviour if the date digits.
 const changeLeftDate = function () {
   if (i === 1) {
     transformLeft(el1);
@@ -75,6 +75,17 @@ const changeRightDate = function () {
   }
 };
 
+// This fonction shiw the line at the bottom of the page moving
+const lineProgressionPlus = function () {
+  const lineToMove = document.querySelector(`.meter__line--active-${i}`);
+  lineToMove.classList.remove("meter__line--transform");
+};
+
+const lineProgressionMinus = function () {
+  const lineToMove = document.querySelector(`.meter__line--active-${i}`);
+  lineToMove.classList.add("meter__line--transform");
+};
+
 const arrowRightPressed = function () {
   if (i >= 3) return;
   moveLeft("icon");
@@ -83,7 +94,7 @@ const arrowRightPressed = function () {
   moveLeft("pic");
   changeLeftDate();
   arrowLeft.src = "icons/arrow_left.png";
-  lineTwo.classList.remove("balls__line--transform");
+  lineProgressionPlus();
   i += 1;
 };
 
