@@ -18,10 +18,11 @@ $date-font-size: 13rem;
 main {
   margin: auto;
   margin-top: 6rem;
+  overflow: hidden;
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
 }
 
 .top-section {
@@ -30,6 +31,7 @@ main {
   justify-content: space-between;
   align-items: flex-end;
   margin: auto;
+  position: relative;
 }
 
 .left-container {
@@ -39,6 +41,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+  border: 1px slid red;
 }
 
 .icons,
@@ -60,16 +65,22 @@ main {
     margin-top: 1rem;
     font-size: 2rem;
     font-weight: 700;
-    width: fit-content;
+    min-width: 26rem;
+    overflow: visible;
   }
   &__text {
     margin-top: -1rem;
-    width: 63%;
+    min-width: 21rem;
+    overflow: visible;
   }
 }
 
 .slider {
   display: flex;
+  width: auto;
+  position: absolute;
+  left: 45rem;
+  z-index: 2;
 
   &__pic {
     height: 32rem;
