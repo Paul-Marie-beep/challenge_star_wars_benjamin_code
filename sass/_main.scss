@@ -8,6 +8,10 @@ $width: 75%;
 
 $date-font-size: 13rem;
 
+@mixin transition-transform {
+  transition: opacity 0.15s ease, transform 0.2s ease-in-out;
+}
+
 * {
   width: 100%;
   background-color: $background-color;
@@ -60,6 +64,7 @@ main {
   &__icon {
     height: 4rem;
     width: 4rem;
+    @include transition-transform();
   }
   &__title {
     margin-top: 1rem;
@@ -67,11 +72,13 @@ main {
     font-weight: 700;
     min-width: 26rem;
     overflow: visible;
+    @include transition-transform();
   }
   &__text {
     margin-top: -1rem;
     min-width: 21rem;
     overflow: visible;
+    @include transition-transform();
   }
 }
 
@@ -86,6 +93,7 @@ main {
     height: 32rem;
     width: auto;
     margin-right: 0px;
+    @include transition-transform();
   }
 }
 
@@ -98,12 +106,12 @@ main {
   height: $date-font-size;
 }
 
-.camo {
-  transform: translateY(-100%);
-  &--times-2 {
-    transform: translateY(-200%);
-  }
-}
+// .camo {
+//   transform: translateY(-100%);
+//   &--times-2 {
+//     transform: translateY(-200%);
+//   }
+// }
 
 .bottom-section {
   height: 15%;
@@ -137,7 +145,7 @@ main {
   &__line {
     height: 2px;
     background-color: $golden-brown-colour;
-    transition: transform 2s;
+    transition: transform 0.2s;
     transform-origin: left;
     position: absolute;
     top: 50%;
@@ -153,4 +161,11 @@ main {
 
 .lines {
   position: relative;
+}
+
+.translate-left-1 {
+  transform: translateX(-100%);
+}
+.translate-left-2 {
+  transform: translateX(-200%);
 }
