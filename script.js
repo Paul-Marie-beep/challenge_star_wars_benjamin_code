@@ -1,10 +1,10 @@
 const arrowRight = document.querySelector(".arrow__right");
 const arrowLeft = document.querySelector(".arrow__left");
 
-// const el1 = document.querySelector(".dates__1");
-// const el2 = document.querySelector(".dates__2");
-// const el3 = document.querySelector(".dates__3");
-const el2_2 = document.querySelector(".dates__2--digit-2");
+const dateOne = document.querySelector(".dates__1");
+const dateTwo = document.querySelector(".dates__2");
+const dateThree = document.querySelector(".dates__3");
+const dateTwoDotTwo = document.querySelector(".dates__2--digit-2");
 
 const lineTwo = document.querySelector(".balls__line--active");
 const lineOne = document.querySelector(".balls__line");
@@ -63,32 +63,29 @@ const moveRight = function (type) {
 // The first fonctions is called we we press the right arrow.
 const changeLeftDate = function () {
   if (i === 1) {
-    transformLeft(el1);
-    transformLeft(el2);
-    toggleOpacity(el1, el2);
-    el3.classList.add("translate-left-2");
+    dateOne.classList.add("transform-left-1");
+    dateTwo.classList.add("transform-left-1");
+    toggleOpacity(dateOne, dateTwo);
   }
-
   if (i === 2) {
-    transformLeft(el2_2);
-    el3.classList.add("translate-left-custom");
-    toggleOpacity(el2_2, el3);
+    dateTwoDotTwo.classList.add("transform-left-15");
+    dateThree.classList.add("transform-left-3");
+    toggleOpacity(dateTwoDotTwo, dateThree);
   }
 };
 
 // This function is called when we press the left arrow
 const changeRightDate = function () {
   if (i === 3) {
-    el3.classList.remove("translate-left-custom");
-    transformRight(el2_2);
-    toggleOpacity(el3, el2_2);
+    dateTwoDotTwo.classList.remove("transform-left-15");
+    dateThree.classList.remove("transform-left-3");
+    toggleOpacity(dateTwoDotTwo, dateThree);
   }
 
   if (i === 2) {
-    transformRight(el1);
-    transformRight(el2);
-    toggleOpacity(el1, el2);
-    el3.classList.remove("translate-left-2");
+    dateOne.classList.remove("transform-left-1");
+    dateTwo.classList.remove("transform-left-1");
+    toggleOpacity(dateOne, dateTwo);
   }
 };
 
@@ -122,7 +119,7 @@ const arrowRightPressed = function () {
   moveLeft("title");
   moveLeft("text");
   moveLeft("pic");
-  // changeLeftDate();
+  changeLeftDate();
   lineProgressionPlus();
   ballFilling();
   if (i === 1) arrowLeft.src = "icons/arrow_left.png";
@@ -135,7 +132,7 @@ const arrowLeftPressed = function () {
   moveRight("title");
   moveRight("text");
   moveRight("pic");
-  // changeRightDate();
+  changeRightDate();
   lineProgressionMinus();
   ballEmptying();
   i -= 1;

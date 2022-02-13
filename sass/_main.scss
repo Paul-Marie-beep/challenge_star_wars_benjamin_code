@@ -145,12 +145,14 @@ main {
   &__2 {
     display: flex;
     margin-left: 1rem;
+    transform: translateX(-50%);
     @include transition-transform();
     &--digit-2 {
       @include transition-transform();
     }
   }
   &__3 {
+    transform: translateX(-250%);
     @include transition-transform();
   }
 }
@@ -227,8 +229,17 @@ main {
 .transform-left-1 {
   transform: translateX(-100%);
 }
+
+.transform-left-15 {
+  transform: translateX(-100%);
+}
+
 .transform-left-2 {
   transform: translateX(-200%);
+}
+
+.transform-left-3 {
+  transform: translateX(-340%);
 }
 
 .translate-left-custom {
