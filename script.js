@@ -44,7 +44,9 @@ const moveRight = function (type) {
   allEl.forEach((el) => transformRight(el));
 };
 
-// We create custom functions the handle the behaviour if the date digits.
+// We create custom functions that handles the behaviour off the date digits.
+// The behaviiour is different depending on which date we change
+// The first fonctions is called we we press the right arrow.
 const changeLeftDate = function () {
   if (i === 1) {
     transformLeft(el1);
@@ -60,6 +62,7 @@ const changeLeftDate = function () {
   }
 };
 
+// This function is called when we press the left arrow
 const changeRightDate = function () {
   if (i === 3) {
     el3.classList.remove("translate-left-custom");
@@ -75,7 +78,7 @@ const changeRightDate = function () {
   }
 };
 
-// This fonction shiw the line at the bottom of the page moving
+// This fonction shows the line at the bottom of the page moving
 const lineProgressionPlus = function () {
   const lineToMove = document.querySelector(`.meter__line--active-${i}`);
   lineToMove.classList.remove("meter__line--transform");
@@ -87,12 +90,13 @@ const lineProgressionMinus = function () {
   lineToMove.classList.add("meter__line--transform");
 };
 
+// This function shows a golden ball instead of a grey one
 const ballFilling = function () {
   const ballToFill = document.querySelector(`.meter__ball--active-${i}`);
-  console.log(ballToFill);
   ballToFill.classList.remove("meter__ball--transform");
 };
 
+// This function shows a grey ball instead of a golden one
 const ballEmptying = function () {
   const ballToFill = document.querySelector(`.meter__ball--active-${i - 1}`);
   ballToFill.classList.add("meter__ball--transform");
@@ -105,9 +109,9 @@ const arrowRightPressed = function () {
   moveLeft("text");
   moveLeft("pic");
   changeLeftDate();
-  arrowLeft.src = "icons/arrow_left.png";
   lineProgressionPlus();
   ballFilling();
+  if (i === 1) arrowLeft.src = "icons/arrow_left.png";
   i += 1;
 };
 
