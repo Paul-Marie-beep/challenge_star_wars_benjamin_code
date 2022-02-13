@@ -12,6 +12,14 @@ $date-font-size: 13rem;
   transition: opacity 0.2s ease, transform 0.2s ease-in;
 }
 
+@mixin transform-seventy {
+  transform: translateX(-70%);
+}
+
+@mixin transform-one-hundred-and-seventy {
+  transform: translateX(-170%);
+}
+
 * {
   width: 100%;
   background-color: $background-color;
@@ -66,6 +74,12 @@ main {
     height: 4rem;
     width: 4rem;
     @include transition-transform();
+    &--2 {
+      @include transform-seventy();
+    }
+    &--3 {
+      @include transform-one-hundred-and-seventy();
+    }
   }
   &__title {
     margin-top: 1rem;
@@ -74,12 +88,32 @@ main {
     min-width: 26rem;
     overflow: visible;
     @include transition-transform();
+    &--2 {
+      @include transform-seventy();
+    }
+    &--3 {
+      @include transform-one-hundred-and-seventy();
+    }
   }
   &__text {
     margin-top: -1rem;
     min-width: 21rem;
     overflow: visible;
     @include transition-transform();
+    &--2 {
+      @include transform-seventy();
+    }
+    &--3 {
+      @include transform-one-hundred-and-seventy();
+    }
+  }
+  &__pic {
+    &--2 {
+      @include transform-seventy();
+    }
+    &--3 {
+      @include transform-one-hundred-and-seventy();
+    }
   }
 }
 
@@ -190,13 +224,21 @@ main {
   position: relative;
 }
 
-.translate-left-1 {
+.transform-left-1 {
   transform: translateX(-100%);
 }
-.translate-left-2 {
+.transform-left-2 {
   transform: translateX(-200%);
 }
 
 .translate-left-custom {
   transform: translateX(-340%);
+}
+
+.transform-one-hundred-and-thirty {
+  transform: translateX(-130%);
+}
+
+.transform-thirty {
+  transform: translateX(-30%);
 }

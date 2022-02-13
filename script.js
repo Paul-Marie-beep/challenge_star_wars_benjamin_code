@@ -1,9 +1,9 @@
 const arrowRight = document.querySelector(".arrow__right");
 const arrowLeft = document.querySelector(".arrow__left");
 
-const el1 = document.querySelector(".dates__1");
-const el2 = document.querySelector(".dates__2");
-const el3 = document.querySelector(".dates__3");
+// const el1 = document.querySelector(".dates__1");
+// const el2 = document.querySelector(".dates__2");
+// const el3 = document.querySelector(".dates__3");
 const el2_2 = document.querySelector(".dates__2--digit-2");
 
 const lineTwo = document.querySelector(".balls__line--active");
@@ -18,30 +18,44 @@ const toggleOpacity = function (domElement1, domElement2) {
 };
 
 // Function to translate each div 100% more on the left. We want to select the distance travelled depending on which step of the sequence we are currently in
-const transformLeft = function (domElement) {
-  domElement.classList.add(`translate-left-${i}`);
+const transformLeft = function (el1, el2) {
+  console.log(i, "i");
+  if (i === 1) {
+    el1.classList.add("transform-thirty");
+    el2.classList.add("transform-left-1");
+  }
+  if (i === 2) {
+    el1.classList.add("transform-one-hundred-and-thirty");
+    el2.classList.add("transform-left-2");
+  }
 };
 
-const transformRight = function (domElement) {
-  domElement.classList.remove(`translate-left-${i - 1}`);
+const transformRight = function (el1, el2) {
+  if (i === 3) {
+    el1.classList.remove("transform-one-hundred-and-thirty");
+    el2.classList.remove("transform-left-2");
+  }
+  if (i === 2) {
+    el1.classList.remove("transform-thirty");
+    el2.classList.remove("transfom-left-1");
+  }
 };
 
 // Type can be title, icon, text or pic.
 // It will move to the left the elements and hyde or reveal them
 const moveLeft = function (type) {
-  const allEl = document.querySelectorAll(`.description__${type}`);
   const el1 = document.querySelector(`.description__${type}--${i}`);
   const el2 = document.querySelector(`.description__${type}--${i + 1}`);
+  console.log("move left", el1, el2);
   toggleOpacity(el1, el2);
-  allEl.forEach((el) => transformLeft(el));
+  transformLeft(el1, el2);
 };
 
 const moveRight = function (type) {
-  const allEl = document.querySelectorAll(`.description__${type}`);
   const el1 = document.querySelector(`.description__${type}--${i - 1}`);
   const el2 = document.querySelector(`.description__${type}--${i}`);
   toggleOpacity(el1, el2);
-  allEl.forEach((el) => transformRight(el));
+  transformRight(el1, el2);
 };
 
 // We create custom functions that handles the behaviour off the date digits.
@@ -108,7 +122,7 @@ const arrowRightPressed = function () {
   moveLeft("title");
   moveLeft("text");
   moveLeft("pic");
-  changeLeftDate();
+  // changeLeftDate();
   lineProgressionPlus();
   ballFilling();
   if (i === 1) arrowLeft.src = "icons/arrow_left.png";
@@ -121,7 +135,7 @@ const arrowLeftPressed = function () {
   moveRight("title");
   moveRight("text");
   moveRight("pic");
-  changeRightDate();
+  // changeRightDate();
   lineProgressionMinus();
   ballEmptying();
   i -= 1;
