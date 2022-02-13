@@ -87,6 +87,17 @@ const lineProgressionMinus = function () {
   lineToMove.classList.add("meter__line--transform");
 };
 
+const ballFilling = function () {
+  const ballToFill = document.querySelector(`.meter__ball--active-${i}`);
+  console.log(ballToFill);
+  ballToFill.classList.remove("meter__ball--transform");
+};
+
+const ballEmptying = function () {
+  const ballToFill = document.querySelector(`.meter__ball--active-${i - 1}`);
+  ballToFill.classList.add("meter__ball--transform");
+};
+
 const arrowRightPressed = function () {
   if (i >= 3) return;
   moveLeft("icon");
@@ -96,6 +107,7 @@ const arrowRightPressed = function () {
   changeLeftDate();
   arrowLeft.src = "icons/arrow_left.png";
   lineProgressionPlus();
+  ballFilling();
   i += 1;
 };
 
@@ -107,6 +119,7 @@ const arrowLeftPressed = function () {
   moveRight("pic");
   changeRightDate();
   lineProgressionMinus();
+  ballEmptying();
   i -= 1;
   if (i === 1) arrowLeft.src = "icons/arrow_left_dark.png";
 };
