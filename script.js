@@ -1,6 +1,8 @@
 const arrowRight = document.querySelector(".arrow__right");
 const arrowLeft = document.querySelector(".arrow__left");
 
+const allIcons = document.querySelectorAll(".description__icon");
+
 const dateOne = document.querySelector(".dates__1");
 const dateTwo = document.querySelector(".dates__2");
 const dateThree = document.querySelector(".dates__3");
@@ -51,6 +53,21 @@ const moveRight = function (type) {
   const el2 = document.querySelector(`.description__${type}--${i}`);
   toggleOpacity(el1, el2);
   transformRight(el1, el2);
+};
+
+// We create a function to animate the icons
+const moveIconLeft = function () {
+  const icon1 = document.querySelector(`.description__icon--${i}`);
+  const icon2 = document.querySelector(`.description__icon--${i + 1}`);
+  toggleOpacity(icon1, icon2);
+  allIcons.forEach((icon) => icon.classList.add(`transform-left-${i}`));
+};
+
+const moveIconRight = function () {
+  const icon2 = document.querySelector(`.description__icon--${i}`);
+  const icon1 = document.querySelector(`.description__icon--${i - 1}`);
+  toggleOpacity(icon1, icon2);
+  allIcons.forEach((icon) => icon.classList.remove(`transform-left-${i - 1}`));
 };
 
 // We create a function to animate the posters
@@ -125,7 +142,7 @@ const ballEmptying = function () {
 
 const arrowRightPressed = function () {
   if (i >= 3) return;
-  moveLeft("icon");
+  moveIconLeft();
   moveLeft("title");
   moveLeft("text");
   movePosterLeft();
@@ -138,7 +155,7 @@ const arrowRightPressed = function () {
 
 const arrowLeftPressed = function () {
   if (i <= 1) return;
-  moveRight("icon");
+  moveIconRight();
   moveRight("title");
   moveRight("text");
   movePosterRight();

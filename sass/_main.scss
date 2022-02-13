@@ -10,7 +10,7 @@ $pic-height: 32rem;
 $date-font-size: 13rem;
 
 @mixin transition-transform {
-  transition: opacity 0.2s ease, transform 0.2s ease-in;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 @mixin transform-seventy {
@@ -74,12 +74,6 @@ main {
     height: 4rem;
     width: 4rem;
     @include transition-transform();
-    &--2 {
-      @include transform-seventy();
-    }
-    &--3 {
-      @include transform-one-hundred-and-seventy();
-    }
   }
   &__title {
     margin-top: 1rem;
