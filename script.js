@@ -6,9 +6,6 @@ const dateTwo = document.querySelector(".dates__2");
 const dateThree = document.querySelector(".dates__3");
 const dateTwoDotTwo = document.querySelector(".dates__2--digit-2");
 
-const lineTwo = document.querySelector(".balls__line--active");
-const lineOne = document.querySelector(".balls__line");
-
 let i = 1;
 
 // Function to hyde and reveal the elements
@@ -19,7 +16,6 @@ const toggleOpacity = function (domElement1, domElement2) {
 
 // Function to translate each div 100% more on the left. We want to select the distance travelled depending on which step of the sequence we are currently in
 const transformLeft = function (el1, el2) {
-  console.log(i, "i");
   if (i === 1) {
     el1.classList.add("transform-thirty");
     el2.classList.add("transform-left-1");
@@ -46,7 +42,6 @@ const transformRight = function (el1, el2) {
 const moveLeft = function (type) {
   const el1 = document.querySelector(`.description__${type}--${i}`);
   const el2 = document.querySelector(`.description__${type}--${i + 1}`);
-  console.log("move left", el1, el2);
   toggleOpacity(el1, el2);
   transformLeft(el1, el2);
 };
@@ -56,6 +51,21 @@ const moveRight = function (type) {
   const el2 = document.querySelector(`.description__${type}--${i}`);
   toggleOpacity(el1, el2);
   transformRight(el1, el2);
+};
+
+// We create a function to animate the posters
+const movePosterLeft = function () {
+  const posterToMove = document.querySelector(`.slider__pic--${i + 1}`);
+  posterToMove.classList.remove("hidden");
+  if (i === 1) posterToMove.classList.add("transform-left-1");
+  if (i === 2) posterToMove.classList.add("transform-left-2");
+};
+
+const movePosterRight = function () {
+  const posterToMove = document.querySelector(`.slider__pic--${i}`);
+  posterToMove.classList.add("hidden");
+  if (i === 3) posterToMove.classList.remove("transform-left-2");
+  if (i === 2) posterToMove.classList.remove("transform-left-1");
 };
 
 // We create custom functions that handles the behaviour off the date digits.
@@ -118,7 +128,7 @@ const arrowRightPressed = function () {
   moveLeft("icon");
   moveLeft("title");
   moveLeft("text");
-  moveLeft("pic");
+  movePosterLeft();
   changeLeftDate();
   lineProgressionPlus();
   ballFilling();
@@ -131,7 +141,7 @@ const arrowLeftPressed = function () {
   moveRight("icon");
   moveRight("title");
   moveRight("text");
-  moveRight("pic");
+  movePosterRight();
   changeRightDate();
   lineProgressionMinus();
   ballEmptying();

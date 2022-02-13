@@ -107,14 +107,6 @@ main {
       @include transform-one-hundred-and-seventy();
     }
   }
-  &__pic {
-    &--2 {
-      @include transform-seventy();
-    }
-    &--3 {
-      @include transform-one-hundred-and-seventy();
-    }
-  }
 }
 
 .slider {
@@ -129,6 +121,9 @@ main {
     width: auto;
     margin-right: 0px;
     @include transition-transform();
+    &--3 {
+      transform: translateX(-100%);
+    }
   }
 }
 
